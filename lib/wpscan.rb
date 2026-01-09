@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+# Standard Lib (must be loaded before ActiveSupport)
+# Logger must be required before ActiveSupport to fix NameError on some systems
+# See: https://github.com/wpscanteam/wpscan/issues/1897
+require 'logger'
+
 # Gems
 # Believe it or not, active_support MUST be the first one,
 # otherwise encoding issues can happen when using JSON format.

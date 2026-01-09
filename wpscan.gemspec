@@ -22,12 +22,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'cms_scanner', '~> 0.15.0'
 
-  # Fixes
+  # Fixes for stdlib gems being extracted in Ruby 3.3+
   # - warning: ostruct was loaded from the standard library
   # - warning: fiddle was loaded from the standard library
+  # - logger required before ActiveSupport (fixes #1897)
   if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.3')
     s.add_dependency('ostruct', '~> 0.6')
     s.add_dependency('fiddle', '~> 1.1')
+    s.add_dependency('logger', '~> 1.6')
   end
 
   s.add_development_dependency 'bundler',             '>= 1.6'
